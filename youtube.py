@@ -1,4 +1,4 @@
-import youtube_dl, podcast, os, ast
+import youtube_dl, os, ast
 
 PATH = "static/podcasts/"
 ydl_opts = {
@@ -26,7 +26,3 @@ def get():
             if '.' in filename:
                 audios[f'{PATH}{filename}'] = ast.literal_eval(open(f'{PATH}{filename.split(".")[0]}', 'r', encoding='UTF-8').read())
     return audios
-
-
-def parse(dict):
-    return podcast.Podcast(dict['uploader'], dict['title'])
