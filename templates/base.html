@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    {% block Head %}{% endblock %}
+</head>
+<body>
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <a href="/" class="navbar-brand d-flex align-items-center" target="_self"><strong>Главная страница</strong> </a>
+        <a href="/add" class="navbar-brand d-flex align-items-center" target="_self"><strong>Добавить подкаст</strong> </a>
+    </div>
+  </div>
+</header>
+    {% block Body %}{% endblock %}
+</body>

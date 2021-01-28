@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block Head %}
+    <title>Add Podcast</title>
+{% endblock %}
+
+{% block Body %}
+    <div style="margin:5%">
+        <form method="POST" action="">
+          Paste here youtube link <input type="text" name="link"/>
+          <input type="submit" name="submit" value="Submit"/>
+        </form>
+
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
