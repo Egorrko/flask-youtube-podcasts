@@ -1,3 +1,0 @@
-flask
-youtube-dl
-flask-SQLAlchemy
