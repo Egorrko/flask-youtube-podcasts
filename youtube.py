@@ -1,9 +1,12 @@
-import youtube_dl, os, ast
+import ast
+import os
+import youtube_dl
 
-PATH = "static/podcasts/"
+from config import PODCASTS_PATH
+
 ydl_opts = {
     'format': 'bestaudio/best',
-    'outtmpl': PATH + '/%(id)s.%(ext)s',
+    'outtmpl': PODCASTS_PATH + '/%(id)s.%(ext)s',
 
 }
 dl = youtube_dl.YoutubeDL(ydl_opts)
@@ -14,18 +17,19 @@ def download(link):
         r = dl.extract_info(link)
     except youtube_dl.utils.DownloadError:
         return False
-    with open(f"{PATH}{r['id']}", 'w', encoding='UTF-8', errors='replace') as f:
+    with open(f"{PODCASTS_PATH}{r['id']}", 'w', encoding='UTF-8', errors='replace') as f:
         f.write(str(r))
     return True
 
 
 def get():
     audios = {}
-    for i in os.walk(PATH):
+    for i in os.walk(PODCASTS_PATH):
         for filename in i[2]:
             if '.' in filename and not filename.endswith('.part'):
                 try:
-                    audios[f'{PATH}{filename}'] = ast.literal_eval(open(f'{PATH}{filename.split(".")[0]}', 'r', encoding='UTF-8').read())
+                    info = ast.literal_eval(open(f'{PODCASTS_PATH}{filename.split(".")[0]}', 'r', encoding='UTF-8').read())
+                    audios[f'{PODCASTS_PATH}{filename}'] = info
                 except FileNotFoundError:
                     pass
     return audios
