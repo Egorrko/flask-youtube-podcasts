@@ -18,7 +18,6 @@ def user_loader(username):
     user = User()
     user.id = username
 
-    print('user_loader() called')
     return user
 
 @login_manager.request_loader
@@ -31,11 +30,8 @@ def request_loader(request):
     user = User()
     user.id = username
     #user.is_authenticated = request.form.get('password') == record.password
-    user.is_authenticated = True
-    print('request_loader() called')
     return user
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
-    print('unauthorized_handler() called')
     return 'Unauthorized'

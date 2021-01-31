@@ -13,7 +13,4 @@ from YoutubePodcasts import models
 if not os.path.exists(config.DATABASE_PATH):
     db.create_all()
 
-for i in models.Users.query.all():
-    print(i.username)
-
 from YoutubePodcasts import views
